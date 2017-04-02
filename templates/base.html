@@ -1,0 +1,44 @@
+{% extends "header.html" %}
+
+{% block title %}PAGE TITLE{% endblock %}
+
+
+{% block extraHead %}
+
+
+{% endblock %}
+
+
+{% block content %}
+
+  <body>
+
+    <h1>HELLO WORLD!</h1>
+    <p>Hello, World!</p>
+    <img src="/static/img/godzilla.jpg" alt="GODZILLA"/>
+
+
+    <div class="dropdown">
+      <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown trigger
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dLabel">
+        ...
+      </ul>
+    </div>
+
+    <!-- Large modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          ...
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+{% endblock %}

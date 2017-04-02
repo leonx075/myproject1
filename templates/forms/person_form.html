@@ -1,0 +1,19 @@
+{% extends "header.html" %}
+
+{% block title %}PAGE TITLE{% endblock %}
+
+
+{% block extraHead %}
+
+
+{% endblock %}
+
+
+{% block content %}
+<h1>New Person</h1>
+  <form class="post-form" method="post">{% csrf_token %}
+  {{ PersonForm.as_p }}
+  <button type="submit" class="save btn btn-default" name="new person">SAVE</button>
+</form>
+
+{% endblock %}
