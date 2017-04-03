@@ -29,7 +29,7 @@ def person(request):
 ## Angular JS
 
 def index(request):
-    return_to_response('person2/person.html', RequestContext(request))
+    return render_to_response('person2/person.html', RequestContext(request))
 
 class PersonViewSet(viewsets.ModelViewSet):
     queryset = Person.objects.all()

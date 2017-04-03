@@ -1,14 +1,15 @@
-var PersonApp = angular.module('PersonApp', ['ngRoute', 'PersonControllers']):
+var PersonApp = angular.module('PersonApp', ['ngRoute', 'personControllers']);
 
-PersonApp.config(['$routeProvider',
+PersonApp.config([
+  '$routeProvider',
   function($routeProvider){
       $routeProvider.
-      when('/person/:peronId', {
-        templateUrl : '/templates/person2/partials/person-detail.html'
-        controller : 'personController'
+        when('/person/:PersonId', {
+          templateUrl : '/templates/person2/partials/person-detail.html',
+          controller : 'personController'
       });
   }
-])
+]);
 
 PersonApp.config([
   '$httpProvider', function($httpProvider){
@@ -16,4 +17,4 @@ PersonApp.config([
       $httpProvier.defaults.xsrfHeaderName = "X-CSRFToken";
 
 }
-])
+]);

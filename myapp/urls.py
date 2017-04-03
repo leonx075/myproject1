@@ -7,5 +7,6 @@ router.register(r'person', views.PersonViewSet)
 
 urlpatterns = [
     url(r'^form/$', views.person),
+    url(r'person$', views.index),
     url(r'^api/', include(router.urls))
 ]
