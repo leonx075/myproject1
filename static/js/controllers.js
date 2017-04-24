@@ -1,9 +1,10 @@
 var personControllers =  angular.module('personControllers', []);
 
-personControllers.personControllers('personDetailController', ['$scope', '$routeParams', '$http',
-    function($scope, $routerParams, $http){
-        $http.get('/person/api/person/' + $routeParams.personId + '/?format=json').success(function(data) {
-          $scope.person = data;
+
+personControllers.controller('PersonDetailController', ['$scope', '$routeParams', '$http',
+    function($scope, $routeParams, $http) {
+        $http.get('/person/api/person/' + $routeParams.PersonId + '/?format=json').success(function(data) {
+          $scope.Person = data;
         });
     }
 ])

@@ -1,40 +1,65 @@
 from django.shortcuts import render, redirect, render_to_response
-from django import forms
 from django.template import RequestContext
 from django.utils import timezone
-from .forms import PersonForm
-from .serializers import PersonSerializer
-#from permissions import IsOwnerOrReadOnly
-from rest_framework import viewsets
-from .models import Person
+
+# rest_framework
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import JSONParser
+from myapp.models import Person
+from myapp.serializers import PersonSerializer
 
 # Create your views here.
 
-## Simple form
+## REST Framework
 
-def person(request):
-    if request.method == "POST":
-        form = PersonForm(request.POST)
-        if form.is_valid():
-            model_instance = form.save(commit=False)
-            model_instance.timestamp = timezone.now()
-            model_instance.save()
-            return redirect('/')
-    else:
-        form = PersonForm()
-    return render(request, 'forms/person_form.html', {'PersonForm': PersonForm})
+@csrf_exempt
+def person_list(request):
+    """
+    List all code snippets, or create a new snippet.
+    """
+    if request.method == 'GET':
+        person = Person.objects.all()
+        serializer = PersonSerializer(person, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = PersonSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
 
 
+@csrf_exempt
+def person_detail(request, pk):
+    """
+    Retrieve, update or delete a code person.
+    """
+    try:
+        person = Person.objects.get(pk=pk)
+    except person.DoesNotExist:
+        return HttpResponse(status=404)
 
-## Angular JS
+    if request.method == 'GET':
+        serializer = PersonSerializer(person)
+        return JsonResponse(serializer.data)
 
-def index(request):
-    return render_to_response('person2/person.html', RequestContext(request))
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = PersonSerializer(person, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data)
+        return JsonResponse(serializer.errors, status=400)
 
-class PersonViewSet(viewsets.ModelViewSet):
-    queryset = Person.objects.all()
-    serializer_class = PersonSerializer
-    #permission_classes = (IsOwnerOrReadOnly,)
+    elif request.method == 'DELETE':
+        person.delete()
+        return HttpResponse(status=204)
 
-    def pre_save(self, obj):
-        obj.owner = self.request.user
+
+def test(request):
+    return render(request, "wedge_tool/wedge_tool_base.html")

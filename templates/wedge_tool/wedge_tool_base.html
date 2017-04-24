@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>Wedge Tool</title>
+      <script type='text/javascript' src='/static/js/angular-1.6.3.js'></script>
+      <script type="text/javascript" src="/static/js/wedge_chart.js"></script>
+      <script type="text/javascript" src="/static/js/ng-google-chart.js"></script>
+
+  </head>
+
+
+  <body>
+      <h1>The Wedge Tool</h1>
+      <h2>City Name</h2>
+
+
+
+      <div ng-app="test" ng-controller="MainCtrl">
+        <p>// todos.first_name //</p>
+        <div google-chart chart="chart"
+         style="border:0px inset black;padding:0;width:400px">
+        </div>
+
+        <p>// todos.city //</p>
+        <p>
+          Wedge_1: <input type=range min=-10000 max=0000 value=//aa// ng-model="aa" ng-change="chart.data[14][3]=1*aa">//aa//
+        </p>
+        <p>
+          Wedge_1: <input type=range min=-10000 max=0000 value=//bb// ng-model="bb" ng-change="chart.data[15][3]=1*bb">//bb//
+        </p>
+        <p>
+          Wedge 1: <input type=range min=-10000 max=0000 value=//cc// ng-model="cc" ng-change="chart.data[16][3]=1*cc">//cc//
+        </p>
+
+      </div>
+
+  </body>
+</html>

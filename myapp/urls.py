@@ -1,12 +1,10 @@
 from django.conf.urls import url, include
 from rest_framework import routers
-from . import views
+from myapp import views
 
-router = routers.DefaultRouter()
-router.register(r'person', views.PersonViewSet)
 
 urlpatterns = [
-    url(r'^form/$', views.person),
-    url(r'person$', views.index),
-    url(r'^api/', include(router.urls))
+    url(r'^persons/$', views.person_list),
+    url(r'^persons/(?P<pk>[0-9]+)/$', views.person_detail),
+    url(r'^test/', views.test, name='test')
 ]
