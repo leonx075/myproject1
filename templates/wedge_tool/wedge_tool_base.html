@@ -7,34 +7,39 @@
       <script type='text/javascript' src='/static/js/angular-1.6.3.js'></script>
       <script type="text/javascript" src="/static/js/wedge_chart.js"></script>
       <script type="text/javascript" src="/static/js/ng-google-chart.js"></script>
-
+      <script type="text/javascript" src="/static/js/jquery-latest.js"></script>
+      <script type="text/javascript" src="/static/js/jquery.layout.min.js"></script>
+      <script>
+          $(document).ready(function () {
+              $('body').layout({ applyDefaultStyles: true });
+          });
+      </script>
   </head>
 
 
-  <body>
+  <body ng-app="test" ng-controller="MainCtrl">
 
-      <div ng-app="test" ng-controller="MainCtrl">
+            <div class="ui-layout-center">Center
 
-        <p>// todos.first_name //</p>
+                     <div google-chart chart="chart"
+                       style="border:0px inset black;padding:0;width:400px">
 
-        <div id="chartx" google-chart chart="chart"
-         style="border:0px inset black;padding:0;width:400px">
-        </div>
+                </div>
+            </div>
 
-        <p>// todos.city //</p>
+            <div class="ui-layout-east">Top
 
-        <div id="dashboard">
-        <p>
-          Wedge_1: <input type=range min=-10000 max=0000 value=//aa// ng-model="aa" ng-change="chart.data[14][3]=1*aa">//aa//
-        </p>
-        <p>
-          Wedge_1: <input type=range min=-10000 max=0000 value=//bb// ng-model="bb" ng-change="chart.data[15][3]=1*bb">//bb//
-        </p>
-        <p>
-          Wedge 1: <input type=range min=-10000 max=0000 value=//cc// ng-model="cc" ng-change="chart.data[16][3]=1*cc">//cc//
-        </p>
-        <div>
-      </div>
+                    <p>
+                    Wedge_1: <input type=range min=-10000 max=0000 value=//aa// ng-model="aa" ng-change="chart.data[14][3]=1*aa">//aa//
+                    </p>
+                    <p>
+                    Wedge_1: <input type=range min=-10000 max=0000 value=//bb// ng-model="bb" ng-change="chart.data[15][3]=1*bb">//bb//
+                    </p>
+                    <p>
+                    Wedge 1: <input type=range min=-10000 max=0000 value=//cc// ng-model="cc" ng-change="chart.data[16][3]=1*cc">//cc//
+                    </p>
+
+           </div>
 
   </body>
 </html>

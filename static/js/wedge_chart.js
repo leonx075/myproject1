@@ -1,4 +1,4 @@
-var test = angular.module('test', [ 'googlechart' ]);
+var test = angular.module('test', ['googlechart']);
 
 test.config(function($interpolateProvider) {
   $interpolateProvider.startSymbol('//');
@@ -10,7 +10,6 @@ test.controller('MainCtrl', function($scope, $http) {
   $http.get("/persons/persons/3/").then(function (response) {
     $scope.todos = response.data;
 
-t 
 //  $scope.todos = $http.get("/persons/persons/3/", {cache: false});
 //  $scope.bados = $http.get("/persons/persons/4/", {cache: false});
 
@@ -46,8 +45,9 @@ t
     chart1.options = {
         displayExactValues: true,
         title: $scope.todos.last_name,
-        width: 1600,
-        height: 800,
+        width: 1200,
+        height: 600,
+        legend: {position: "bottom"},
         isStacked: true,
         chartArea: {backgroundColor: "lightblue"},
         vAxis: {title:"CO2 emissions", minValue: 0, gridlines: {count: 6, color:"lightblue"}},
