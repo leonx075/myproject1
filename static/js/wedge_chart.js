@@ -10,7 +10,7 @@ test.controller('MainCtrl', function($scope, $http) {
   $http.get("/persons/persons/3/").then(function (response) {
     $scope.todos = response.data;
 
-
+t 
 //  $scope.todos = $http.get("/persons/persons/3/", {cache: false});
 //  $scope.bados = $http.get("/persons/persons/4/", {cache: false});
 
